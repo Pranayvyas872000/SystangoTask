@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import Mainheader from "../../component/header";
+import Mainheader from "../../component/Header";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -102,7 +102,7 @@ const [search, setSearch] = useState("")
 
 {
   postdata.map((Item)=>{
-   return <Card  className="postcard">
+   return <Card  className="postcard" key={Item.id}>
       <Card.Body>
         <Card.Title>{Item.heading}</Card.Title>
         <Card.Text>

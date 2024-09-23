@@ -10,7 +10,7 @@ import {
 import { useRouter } from 'next/navigation'
 
 
-export default function header() {
+export default function Header() {
   const userdata = useSelector((state) => state.userdata);
   const dispatch = useDispatch();
   const router = useRouter()

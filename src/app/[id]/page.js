@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import Mainheader from "../../component/header";
+import Mainheader from "../../component/Header";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -139,7 +139,7 @@ const Searchconnections=()=>{
 
 
 {postdata.length>0? postdata.map((Item)=>{
-  return <Card  className="postcard">
+  return <Card  className="postcard" key={Item.id}>
      <Card.Body>
        <Card.Title>{Item.heading}</Card.Title>
        <Card.Text>
@@ -173,7 +173,7 @@ const Searchconnections=()=>{
 <div className="row">
 {
   connectionsdata.map((Item)=>{
-   return Item.id==userdata.id?<></>: <div className="col-md-4">
+   return Item.id==userdata.id?<></>: <div className="col-md-4" key={Item.id}>
     <div class="user-avatar" onClick={()=>{router.push(`/${Item.username}/profile`)}}>
       <img class="avatar" src={Item.imageurl}/>
       <div class={Item.status=="active" ? 'status-overlay-active' : 'status-overlay-unactive'}>
