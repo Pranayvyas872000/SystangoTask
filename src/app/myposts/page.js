@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import Mainheader from "../../component/header";
+import Mainheader from "../../component/Header";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -27,7 +27,7 @@ const [search, setSearch] = useState("")
  const getPost=()=>{
   if(userdata)
   {
-    const url=  "http://localhost:8000/posts?postuserid="+ userdata.id
+    const url=  "https://jsonserver-topaz-rho.vercel.app/"+"/posts?postuserid="+ userdata.id
     axios.get(url)
     .then((resp) => {
       setpostdata(resp.data)
@@ -45,7 +45,7 @@ const [search, setSearch] = useState("")
 
  
  const SearchPost=()=>{
-  const url=  "http://localhost:8000/posts?postuserid="+ userdata.id+"&q=" + search
+  const url=  "https://jsonserver-topaz-rho.vercel.app/"+"posts?postuserid="+ userdata.id+"&q=" + search
   axios.get(url)
   .then((resp) => {
     setpostdata(resp.data)

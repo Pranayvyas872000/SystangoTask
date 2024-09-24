@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import Mainheader from "../../component/header";
+import Mainheader from "../../component/Header";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -38,7 +38,7 @@ const { ref, inView } = useInView()
 
  const getPost=()=>{
   var localcurrentPage=currentPage+1
-  const url=  "http://localhost:8000/posts?_page=" + localcurrentPage + "&_limit=" + pageSize
+  const url=  "https://jsonserver-topaz-rho.vercel.app/"+"posts?_page=" + localcurrentPage + "&_limit=" + pageSize
   + "&q=" + search + "&_sort="  + sortColumn.orderBy
   axios.get(url)
   .then((resp) => {
@@ -64,7 +64,7 @@ const { ref, inView } = useInView()
 
  
  const SearchPost=()=>{
-  const url=  "http://localhost:8000/posts?q=" + search
+  const url=  "https://jsonserver-topaz-rho.vercel.app/"+"posts?q=" + search
   axios.get(url)
   .then((resp) => {
     setCurrentPage(1)
@@ -77,7 +77,7 @@ const { ref, inView } = useInView()
 
 
  const getconnections=()=> {
-  axios.get("http://localhost:8000/users")
+  axios.get("https://jsonserver-topaz-rho.vercel.app/"+"users")
   .then((resp) => {
     console.log(resp) 
     setconnectionsdata(resp.data)
@@ -86,7 +86,7 @@ const { ref, inView } = useInView()
   });
 }
 const Searchconnections=()=>{
-  const url=  "http://localhost:8000/users?q=" + search2
+  const url=  "https://jsonserver-topaz-rho.vercel.app/"+"users?q=" + search2
   axios.get(url)
   .then((resp) => {
     setconnectionsdata(resp.data)

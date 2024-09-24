@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import Mainheader from "../../../component/header";
+import Mainheader from "../../../component/Header";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -152,7 +152,7 @@ useEffect(()=>{
         description: description,
         imageurl:fileBase64
     }
-      axios.patch(`http://localhost:8000/users/${userName}`,localuserData)
+      axios.patch("https://jsonserver-topaz-rho.vercel.app/"+`users/${userName}`,localuserData)
       .then((resp) => {
         localStorage.setItem("userdata",JSON.stringify(localuserData))   
         dispatch(setUserdata(localuserData));

@@ -18,7 +18,7 @@ export default function Home() {
   const ProceedLogin = (e) => {
     e.preventDefault();
     if (validate()) {
-        axios.get("http://localhost:8000/users/" + username)
+        axios.get("https://jsonserver-topaz-rho.vercel.app/"+"/users/" + username)
         .then((resp) => {
             if (Object.keys(resp.data).length === 0) { 
                 toast.error('Please Enter valid username');

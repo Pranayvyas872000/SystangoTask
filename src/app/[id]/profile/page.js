@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import Mainheader from "../../../component/header";
+import Mainheader from "../../../component/Header";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -29,7 +29,7 @@ export default function Home() {
 
 
 const getPost=(userid)=>{
-    const url=  "http://localhost:8000/posts?postuserid="+ userid
+    const url=  "https://jsonserver-topaz-rho.vercel.app/"+"posts?postuserid="+ userid
     axios.get(url)
     .then((resp) => {
       setpostdata(resp.data)
@@ -41,7 +41,7 @@ const getPost=(userid)=>{
 
 
  const getuser=(userid)=>{
-  axios.get("http://localhost:8000/users/" + userid)
+  axios.get("https://jsonserver-topaz-rho.vercel.app/"+"users/" + userid)
         .then((resp) => {
           setuserdata(resp.data)
         }).catch((err) => {
@@ -51,7 +51,7 @@ const getPost=(userid)=>{
  
  
  const SearchPost=()=>{
-  const url=  "http://localhost:8000/posts?postuserid="+ userdata.id+"&q=" + search
+  const url=  "https://jsonserver-topaz-rho.vercel.app/"+"posts?postuserid="+ userdata.id+"&q=" + search
   axios.get(url)
   .then((resp) => {
     setpostdata(resp.data)
