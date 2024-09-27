@@ -75,7 +75,7 @@ export default function Home() {
           description: description,
           imageurl:fileBase64
       }
-        axios.post("https://jsonserver-topaz-rho.vercel.app/"+"users",userData)
+        axios.post("https://jsonserver-rose.vercel.app/"+"users",userData)
         .then((resp) => {
           localStorage.setItem("userdata",JSON.stringify(userData))   
           dispatch(setUserdata(userData));

@@ -29,7 +29,7 @@ export default function Home() {
 
 
 const getPost=(userid)=>{
-    const url=  "https://jsonserver-topaz-rho.vercel.app/"+"posts?postuserid="+ userid
+    const url=  "https://jsonserver-rose.vercel.app/"+"posts?postuserid="+ userid
     axios.get(url)
     .then((resp) => {
       setpostdata(resp.data)
@@ -41,7 +41,7 @@ const getPost=(userid)=>{
 
 
  const getuser=(userid)=>{
-  axios.get("https://jsonserver-topaz-rho.vercel.app/"+"users/" + userid)
+  axios.get("https://jsonserver-rose.vercel.app/"+"users/" + userid)
         .then((resp) => {
           setuserdata(resp.data)
         }).catch((err) => {
@@ -51,7 +51,7 @@ const getPost=(userid)=>{
  
  
  const SearchPost=()=>{
-  const url=  "https://jsonserver-topaz-rho.vercel.app/"+"posts?postuserid="+ userdata.id+"&q=" + search
+  const url=  "https://jsonserver-rose.vercel.app/"+"posts?postuserid="+ userdata.id+"&q=" + search
   axios.get(url)
   .then((resp) => {
     setpostdata(resp.data)

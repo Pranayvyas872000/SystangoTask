@@ -27,7 +27,7 @@ const [search, setSearch] = useState("")
  const getPost=()=>{
   if(userdata)
   {
-    const url=  "https://jsonserver-topaz-rho.vercel.app/"+"/posts?postuserid="+ userdata.id
+    const url=  "https://jsonserver-rose.vercel.app/"+"/posts?postuserid="+ userdata.id
     axios.get(url)
     .then((resp) => {
       setpostdata(resp.data)
@@ -45,7 +45,7 @@ const [search, setSearch] = useState("")
 
  
  const SearchPost=()=>{
-  const url=  "https://jsonserver-topaz-rho.vercel.app/"+"posts?postuserid="+ userdata.id+"&q=" + search
+  const url=  "https://jsonserver-rose.vercel.app/"+"posts?postuserid="+ userdata.id+"&q=" + search
   axios.get(url)
   .then((resp) => {
     setpostdata(resp.data)

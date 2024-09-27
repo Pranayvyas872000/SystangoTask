@@ -38,7 +38,7 @@ const { ref, inView } = useInView()
 
  const getPost=()=>{
   var localcurrentPage=currentPage+1
-  const url=  "https://jsonserver-topaz-rho.vercel.app/"+"posts?_page=" + localcurrentPage + "&_limit=" + pageSize
+  const url=  "https://jsonserver-rose.vercel.app/"+"posts?_page=" + localcurrentPage + "&_limit=" + pageSize
   + "&q=" + search + "&_sort="  + sortColumn.orderBy
   axios.get(url)
   .then((resp) => {
@@ -64,7 +64,7 @@ const { ref, inView } = useInView()
 
  
  const SearchPost=()=>{
-  const url=  "https://jsonserver-topaz-rho.vercel.app/"+"posts?q=" + search
+  const url=  "https://jsonserver-rose.vercel.app/"+"posts?q=" + search
   axios.get(url)
   .then((resp) => {
     setCurrentPage(1)
@@ -77,7 +77,7 @@ const { ref, inView } = useInView()
 
 
  const getconnections=()=> {
-  axios.get("https://jsonserver-topaz-rho.vercel.app/"+"users")
+  axios.get("https://jsonserver-rose.vercel.app/"+"users")
   .then((resp) => {
     console.log(resp) 
     setconnectionsdata(resp.data)
@@ -86,7 +86,7 @@ const { ref, inView } = useInView()
   });
 }
 const Searchconnections=()=>{
-  const url=  "https://jsonserver-topaz-rho.vercel.app/"+"users?q=" + search2
+  const url=  "https://jsonserver-rose.vercel.app/"+"users?q=" + search2
   axios.get(url)
   .then((resp) => {
     setconnectionsdata(resp.data)
