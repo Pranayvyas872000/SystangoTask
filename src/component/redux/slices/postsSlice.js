@@ -8,7 +8,6 @@ const postsSlice = createSlice({
   reducers: {
     setUserdata: (state, action) => {
       const  data  = action.payload; 
-      console.log(data)
       state=data
       return {
         ...state,

@@ -31,9 +31,9 @@ const [search, setSearch] = useState("")
     axios.get(url)
     .then((resp) => {
       setpostdata(resp.data)
-      console.log(resp.data)
+      
     }).catch((err) => {
-        console.log(err);
+        
     });
   }
  }
@@ -50,7 +50,7 @@ const [search, setSearch] = useState("")
   .then((resp) => {
     setpostdata(resp.data)
   }).catch((err) => {
-      console.log(err);
+      
   });
  }
 

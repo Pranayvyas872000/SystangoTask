@@ -16,11 +16,11 @@ export default function Header() {
   const router = useRouter()
 useEffect(()=>{
 var userdata= localStorage.getItem("userdata")
-console.log(userdata)
+
 if(!(userdata==undefined&&userdata==null))
 {
   userdata= JSON.parse(userdata)
-  console.log(userdata)
+  
   dispatch(setUserdata(userdata));
 }
 else

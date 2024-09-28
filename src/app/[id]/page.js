@@ -53,7 +53,7 @@ const { ref, inView } = useInView()
     setnomoredata(true)
   }
   }).catch((err) => {
-      console.log(err);
+      
   });
  }
 
@@ -70,19 +70,19 @@ const { ref, inView } = useInView()
     setCurrentPage(1)
     setpostdata(resp.data)
   }).catch((err) => {
-      console.log(err);
+      
   });
  }
 
 
 
  const getconnections=()=> {
-  axios.get("https://jsonserver-rose.vercel.app/"+"users",)
+  axios.get("https://jsonserver-rose.vercel.app/"+"users")
   .then((resp) => {
-    console.log(resp) 
+     
     setconnectionsdata(resp.data)
   }).catch((err) => {
-      console.log(err);
+      
   });
 }
 const Searchconnections=()=>{
@@ -91,7 +91,7 @@ const Searchconnections=()=>{
   .then((resp) => {
     setconnectionsdata(resp.data)
   }).catch((err) => {
-      console.log(err);
+      
   });
  }
 

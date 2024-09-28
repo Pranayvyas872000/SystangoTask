@@ -48,7 +48,7 @@ export default function Home() {
            getBase64(file)
           .then((result) => {
             file["base64"] = result;
-            console.log(result)
+            
             setFileBase64(result)
           })
           .catch((err) => {
@@ -83,7 +83,7 @@ export default function Home() {
           var username=userData.username
                   router.push(`/${username}`)
         }).catch((err) => {
-            console.log(err);
+            
         });
     }
 }

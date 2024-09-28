@@ -33,9 +33,9 @@ const getPost=(userid)=>{
     axios.get(url)
     .then((resp) => {
       setpostdata(resp.data)
-      console.log(resp.data)
+      
     }).catch((err) => {
-        console.log(err);
+        
     });
  }
 
@@ -45,7 +45,7 @@ const getPost=(userid)=>{
         .then((resp) => {
           setuserdata(resp.data)
         }).catch((err) => {
-            console.log(err);
+            
         });
  }
  
@@ -56,7 +56,7 @@ const getPost=(userid)=>{
   .then((resp) => {
     setpostdata(resp.data)
   }).catch((err) => {
-      console.log(err);
+      
   });
  }
 
