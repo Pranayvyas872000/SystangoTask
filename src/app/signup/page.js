@@ -204,11 +204,10 @@ export default function Home() {
     <br />
     <div >
     <label for="formFile" className="form-label">Default file input example</label>
-    <input className="form-control customfileupload" 
+    <input className="form-control customfileupload upload-photo" 
     type="file"
     id='formFile'
-                            name="file[]"
-                            className="upload-photo"                
+                            name="file[]"     
                             onClick={(event) => {
                               event.target.value = null;
                             }}
