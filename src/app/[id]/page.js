@@ -40,9 +40,7 @@ const { ref, inView } = useInView()
   var localcurrentPage=currentPage+1
   const url=  "https://jsonserver-rose.vercel.app/"+"posts?_page=" + localcurrentPage + "&_limit=" + pageSize
   + "&q=" + search + "&_sort="  + sortColumn.orderBy
-  axios.get(url,{
-    mode: 'cors'
-  })
+  axios.get(url)
   .then((resp) => {
   if(resp.data.length>0)
   {
@@ -67,9 +65,7 @@ const { ref, inView } = useInView()
  
  const SearchPost=()=>{
   const url=  "https://jsonserver-rose.vercel.app/"+"posts?q=" + search
-  axios.get(url,{
-    mode: 'cors'
-  })
+  axios.get(url)
   .then((resp) => {
     setCurrentPage(1)
     setpostdata(resp.data)
@@ -81,9 +77,7 @@ const { ref, inView } = useInView()
 
 
  const getconnections=()=> {
-  axios.get("https://jsonserver-rose.vercel.app/"+"users",{
-    mode: 'cors'
-  })
+  axios.get("https://jsonserver-rose.vercel.app/"+"users",)
   .then((resp) => {
     console.log(resp) 
     setconnectionsdata(resp.data)
@@ -93,9 +87,7 @@ const { ref, inView } = useInView()
 }
 const Searchconnections=()=>{
   const url=  "https://jsonserver-rose.vercel.app/"+"users?q=" + search2
-  axios.get(url,{
-    mode: 'cors'
-  })
+  axios.get(url)
   .then((resp) => {
     setconnectionsdata(resp.data)
   }).catch((err) => {

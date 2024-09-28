@@ -18,9 +18,7 @@ export default function Home() {
   const ProceedLogin = (e) => {
     e.preventDefault();
     if (validate()) {
-        axios.get("https://jsonserver-rose.vercel.app/"+"/users/" + username,{
-          mode: 'cors'
-        })
+        axios.get("https://jsonserver-rose.vercel.app/"+"/users/" + username)
         .then((resp) => {
             if (Object.keys(resp.data).length === 0) { 
                 toast.error('Please Enter valid username');
