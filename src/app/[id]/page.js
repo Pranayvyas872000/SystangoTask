@@ -77,7 +77,8 @@ const { ref, inView } = useInView()
 
 
  const getconnections=()=> {
-  axios.get("https://jsonserver-rose.vercel.app/"+"users")
+  const url="https://jsonserver-rose.vercel.app/"+"users"
+  axios.get(url)
   .then((resp) => {
      
     setconnectionsdata(resp.data)

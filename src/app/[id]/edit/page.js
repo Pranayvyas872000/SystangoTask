@@ -152,7 +152,8 @@ useEffect(()=>{
         description: description,
         imageurl:fileBase64
     }
-      axios.patch("https://jsonserver-rose.vercel.app/"+`users/${userName}`,localuserData)
+   const  url ="https://jsonserver-rose.vercel.app/"+`users/${userName}`
+      axios.patch(url,localuserData)
       .then((resp) => {
         localStorage.setItem("userdata",JSON.stringify(localuserData))   
         dispatch(setUserdata(localuserData));

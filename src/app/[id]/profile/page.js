@@ -41,7 +41,8 @@ const getPost=(userid)=>{
 
 
  const getuser=(userid)=>{
-  axios.get("https://jsonserver-rose.vercel.app/"+"users/" + userid)
+  const url ="https://jsonserver-rose.vercel.app/"+"users/" + userid
+  axios.get(url)
         .then((resp) => {
           setuserdata(resp.data)
         }).catch((err) => {
