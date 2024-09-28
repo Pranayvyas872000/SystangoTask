@@ -28,7 +28,9 @@ const [search, setSearch] = useState("")
   if(userdata)
   {
     const url=  "https://jsonserver-rose.vercel.app/"+"/posts?postuserid="+ userdata.id
-    axios.get(url)
+    axios.get(url,{
+      mode: 'cors'
+    })
     .then((resp) => {
       setpostdata(resp.data)
       console.log(resp.data)
@@ -46,7 +48,9 @@ const [search, setSearch] = useState("")
  
  const SearchPost=()=>{
   const url=  "https://jsonserver-rose.vercel.app/"+"posts?postuserid="+ userdata.id+"&q=" + search
-  axios.get(url)
+  axios.get(url,{
+    mode: 'cors'
+  })
   .then((resp) => {
     setpostdata(resp.data)
   }).catch((err) => {

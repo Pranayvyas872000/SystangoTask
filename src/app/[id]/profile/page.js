@@ -30,7 +30,9 @@ export default function Home() {
 
 const getPost=(userid)=>{
     const url=  "https://jsonserver-rose.vercel.app/"+"posts?postuserid="+ userid
-    axios.get(url)
+    axios.get(url,{
+      mode: 'cors'
+    })
     .then((resp) => {
       setpostdata(resp.data)
       console.log(resp.data)
@@ -41,7 +43,9 @@ const getPost=(userid)=>{
 
 
  const getuser=(userid)=>{
-  axios.get("https://jsonserver-rose.vercel.app/"+"users/" + userid)
+  axios.get("https://jsonserver-rose.vercel.app/"+"users/" + userid,{
+    mode: 'cors'
+  })
         .then((resp) => {
           setuserdata(resp.data)
         }).catch((err) => {
@@ -52,7 +56,9 @@ const getPost=(userid)=>{
  
  const SearchPost=()=>{
   const url=  "https://jsonserver-rose.vercel.app/"+"posts?postuserid="+ userdata.id+"&q=" + search
-  axios.get(url)
+  axios.get(url,{
+    mode: 'cors'
+  })
   .then((resp) => {
     setpostdata(resp.data)
   }).catch((err) => {
