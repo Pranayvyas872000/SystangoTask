@@ -27,7 +27,7 @@ const [search, setSearch] = useState("")
  const getPost=()=>{
   if(userdata)
   {
-    const url=  "https://jsonserver-rose.vercel.app/"+"/posts?postuserid="+ userdata.id
+    const url=  "https://jsonserver-rose.vercel.app"+"/posts?postuserid="+ userdata.id
     axios.get(url)
     .then((resp) => {
       setpostdata(resp.data)
