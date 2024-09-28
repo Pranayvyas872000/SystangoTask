@@ -69,7 +69,7 @@ const getPost=(userid)=>{
 <div className="col-md-2">
 <Card >
       <Card.Body>
-      <img  class="profileimage" src={userdata.imageurl}/>
+      <img  className="profileimage" src={userdata.imageurl}/>
         <Card.Title>
           {userdata.name}
         </Card.Title>
@@ -94,12 +94,12 @@ const getPost=(userid)=>{
 
   </div>
   <div className="col-md-7">
-  <div class="row g-3 justify-content-center">
-  <div class="col-auto">
+  <div className="row g-3 justify-content-center mt-2">
+  <div className="col-auto">
     <input type="search" className="form-control searchbar1" id="inputPassword1" placeholder="Search any word or phrase"  value={search} onChange={(ev) => setSearch(ev.target.value)}/>
   </div>
-  <div class="col-auto">
-    <button type="submit" class="btn btn-primary mb-3" onClick={SearchPost}>Go</button>
+  <div className="col-auto">
+    <button type="submit" className="btn btn-primary mb-3" onClick={SearchPost}>Go</button>
   </div>
 </div>
 

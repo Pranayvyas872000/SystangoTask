@@ -201,8 +201,8 @@ export default function Home() {
     </div>
     <br />
     <div >
-    <label for="formFile" class="form-label">Default file input example</label>
-    <input class="form-control customfileupload" 
+    <label for="formFile" className="form-label">Default file input example</label>
+    <input className="form-control customfileupload" 
     type="file"
     id='formFile'
                             name="file[]"

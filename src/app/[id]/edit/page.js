@@ -175,7 +175,7 @@ useEffect(()=>{
 <div className="col-md-2">
 <Card >
       <Card.Body>
-      <img  class="profileimage" src={userdata.imageurl}/>
+      <img  className="profileimage" src={userdata.imageurl}/>
         <Card.Title>
           {userdata.name}
         </Card.Title>
@@ -252,8 +252,8 @@ useEffect(()=>{
     </div>
     <br />
     <div >
-    <label for="formFile" class="form-label">Default file input example</label>
-    <input class="form-control customfileupload" 
+    <label for="formFile" className="form-label">Default file input example</label>
+    <input className="form-control customfileupload" 
     type="file"
     id='formFile'
                             name="file[]"
