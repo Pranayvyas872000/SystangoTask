@@ -1,6 +1,5 @@
 'use client'
 import Image from "next/image";
-import Mainheader from "../../component/header";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -11,69 +10,20 @@ import axios from 'axios';
 import { useInView } from "react-intersection-observer"
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import Modal from 'react-bootstrap/Modal';
+import Post from "@/component/Post";
+import Header from "../../component/header";
+
 
 export default function Home() {
   const router = useRouter()
   const userdata = useSelector((state) => state.userdata);
 const [connectionsdata,setconnectionsdata]=useState([])
-const [postdata,setpostdata]=useState([])
-const [search, setSearch] = useState("")
 const [search2, setSearch2] = useState("")
-const [nomoredata, setnomoredata] = useState(false)
-const [currentPage,setCurrentPage]= useState(0)
-const [totalPages, setTotalPages] = useState(1)
-const [sortColumn, setSortColumn] = useState({ column: "id", orderBy: "desc" })
-const { ref, inView } = useInView()
-  var pageSize = 6
+
  useEffect(()=>{
   getconnections();
  },[])
- useEffect(() => {
-  if (inView) {
-    getPost("loadmore");
-  }
-}, [inView])
-
-
-
- const getPost=()=>{
-  var localcurrentPage=currentPage+1
-  const url=  "https://jsonserver-rose.vercel.app/"+"posts?_page=" + localcurrentPage + "&_limit=" + pageSize
-  + "&q=" + search + "&_sort="  + sortColumn.orderBy
-  axios.get(url)
-  .then((resp) => {
-  if(resp.data.length>0)
-  {
-    setCurrentPage(currentPage+1)
-    setpostdata(postdata => [...postdata, ...resp.data])
-    setnomoredata(false)
-  }
-  else
-  {
-    setnomoredata(true)
-  }
-  }).catch((err) => {
-      
-  });
- }
-
- 
-
-
-
-
- 
- const SearchPost=()=>{
-  const url=  "https://jsonserver-rose.vercel.app/"+"posts?q=" + search
-  axios.get(url)
-  .then((resp) => {
-    setCurrentPage(1)
-    setpostdata(resp.data)
-  }).catch((err) => {
-      
-  });
- }
-
 
 
  const getconnections=()=> {
@@ -98,13 +48,18 @@ const Searchconnections=()=>{
 
   return (
     <>  
-    <Mainheader/>
+    <Header/>
       <div className="container maincontainer">
 <div className="row">
 <div className="col-md-2 order-md-1">
 <Card >
       <Card.Body>
-      <img  className="profileimage" src={userdata.imageurl}/>
+      <Image
+      width={80}
+      height={80}
+      src={userdata.imageurl}
+      alt="Picture of the author"
+    />
         <Card.Title>
           {userdata.name}
         </Card.Title>
@@ -121,7 +76,7 @@ const Searchconnections=()=>{
         <ListGroup.Item>
         <Link href="/myposts">My Posts</Link></ListGroup.Item>
         <ListGroup.Item>
-        <Link href="/accountSettings">
+        <Link href={`/${userdata.id}/edit`}>
           Account Settings</Link></ListGroup.Item>
       </ListGroup>
     </Card>
@@ -139,16 +94,17 @@ const Searchconnections=()=>{
   <button type="submit" className="btn btn-primary mb-3" onClick={Searchconnections}>Go</button>
 </div>
 </div>
-<h4>My Connections</h4>
-
-
 <div className="row">
 {
   connectionsdata.map((Item)=>{
    return Item.id==userdata.id?<></>: <div className="col-4" key={Item.id}>
 
     <div className="user-avatar" onClick={()=>{router.push(`/${Item.username}/profile`)}}>
-      <img className="avatar" src={Item.imageurl}/>
+      <Image
+     width={40}
+     height={40} src={Item.imageurl}
+      alt="Picture of the author"
+    />
       <div className={Item.status=="active" ? 'status-overlay-active' : 'status-overlay-unactive'}>
       </div>
      <p> {Item.name}</p>
@@ -163,35 +119,11 @@ const Searchconnections=()=>{
 
   </div>
 
-  <div className="col-md-7 order-md-2">
-  <div className="row g-3 justify-content-center mt-2">
-  <div className="col-auto">
-    <input type="search" className="form-control searchbar1" id="inputPassword1" placeholder="Search any word or phrase"  value={search} onChange={(ev) => setSearch(ev.target.value)}/>
-  </div>
-  <div className="col-auto">
-    <button type="submit" className="btn btn-primary mb-3" onClick={SearchPost}>Go</button>
+ 
+<Post/>
   </div>
 </div>
 
-
-{postdata.length>0? postdata.map((Item)=>{
-  return <Card  className="postcard" key={Item.id}>
-     <Card.Body>
-       <Card.Title>{Item.heading}</Card.Title>
-       <Card.Text>
-       {Item.description}
-       </Card.Text>
-     </Card.Body>
-   </Card>
- }) :<>No Post found</> }
-
-{nomoredata?
-<></>:<div  className="d-flex justify-content-center" ref={ref}>
-<img src="/Spinner.gif" className="spinnerclass"/>  
-</div> }
-  </div>
-  </div>
-</div>
 </>  
   );
 }

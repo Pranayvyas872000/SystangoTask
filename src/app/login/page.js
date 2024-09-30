@@ -79,7 +79,13 @@ const validate = () => {
     </div>
     <br />
     <div className={'inputContainer'}>
-      <input className={'inputButton'} type="button" onClick={ProceedLogin} value={'Log in'} />
+      <button className={'inputButton'} type="button" onClick={ProceedLogin}  >
+      Log in
+      </button>
+
+      <button className={'inputButton'} type="button" onClick={()=>router.push(`/signup`)}  >
+      Sign Up
+      </button>
     </div>
   </div>
   );

@@ -202,7 +202,7 @@ export default function Home() {
     </div>
     <br />
     <div >
-    <label for="formFile" className="form-label">Default file input example</label>
+    <label htmlFor="formFile" className="form-label">Default file input example</label>
     <input className="form-control customfileupload upload-photo" 
     type="file"
     id='formFile'
@@ -224,7 +224,9 @@ export default function Home() {
       />
     </div>
     <div className={'inputContainer'}>
-      <input className={'inputButton'} type="button" onClick={ProceedSignUp} value={'Sign Up'} />
+      <button className={'inputButton'} type="button" onClick={ProceedSignUp}  >
+      Sign Up
+      </button>
     </div>
   </div>
   );

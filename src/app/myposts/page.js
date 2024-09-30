@@ -9,55 +9,9 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from 'axios';
 import Link from 'next/link'
+import MyPost from "@/component/MyPost";
 export default function Home() {
   const userdata = useSelector((state) => state.userdata);
-
-const [postdata,setpostdata]=useState([])
-const [search, setSearch] = useState("")
-  var pageSize = 6
- useEffect(()=>{
-  if(userdata.id)
-    {
-  getPost();
-    }
- },[userdata])
-
-
-
- const getPost=()=>{
-  if(userdata)
-  {
-    const url=  "https://jsonserver-rose.vercel.app"+"/posts?postuserid="+ userdata.id
-    axios.get(url)
-    .then((resp) => {
-      setpostdata(resp.data)
-      
-    }).catch((err) => {
-        
-    });
-  }
- }
-
- 
-
-
-
-
- 
- const SearchPost=()=>{
-  const url=  "https://jsonserver-rose.vercel.app/"+"posts?postuserid="+ userdata.id+"&q=" + search
-  axios.get(url)
-  .then((resp) => {
-    setpostdata(resp.data)
-  }).catch((err) => {
-      
-  });
- }
-
-
-
-
-
   return (
     <>  
     <Mainheader/>
@@ -66,7 +20,12 @@ const [search, setSearch] = useState("")
 <div className="col-md-2">
 <Card >
       <Card.Body>
-      <img  className="profileimage" src={userdata.imageurl}/>
+      <Image
+         width={80}
+         height={80}
+      src={userdata.imageurl}
+      alt="Picture of the author"
+    />
         <Card.Title>
           {userdata.name}
         </Card.Title>
@@ -83,36 +42,14 @@ const [search, setSearch] = useState("")
         <ListGroup.Item>
         <Link href="/myposts">My Posts</Link></ListGroup.Item>
         <ListGroup.Item>
-        <Link href="/accountSettings">
+        <Link href={`/${userdata.id}/edit`}>
           Account Settings</Link></ListGroup.Item>
       </ListGroup>
     </Card>
 
 
   </div>
-  <div className="col-md-7">
-  <div className="row g-3 justify-content-center mt-2">
-  <div className="col-auto">
-    <input type="search" className="form-control searchbar1" id="inputPassword1" placeholder="Search any word or phrase"  value={search} onChange={(ev) => setSearch(ev.target.value)}/>
-  </div>
-  <div className="col-auto">
-    <button type="submit" className="btn btn-primary mb-3" onClick={SearchPost}>Go</button>
-  </div>
-</div>
-
-{
-  postdata.map((Item)=>{
-   return <Card  className="postcard" key={Item.id}>
-      <Card.Body>
-        <Card.Title>{Item.heading}</Card.Title>
-        <Card.Text>
-        {Item.description}
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  })
-}
-  </div>
+ <MyPost/>
   </div>
 </div>
 </>  

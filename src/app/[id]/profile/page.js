@@ -11,6 +11,7 @@ import axios from 'axios';
 import { useInView } from "react-intersection-observer"
 import Link from 'next/link'
 import { useRouter ,useParams } from 'next/navigation'
+import ProfilePost from "@/component/ProfilePost";
 export default function Home() {
   const router = useRouter()
   const params = useParams()
@@ -50,16 +51,6 @@ const getPost=(userid)=>{
         });
  }
  
- 
- const SearchPost=()=>{
-  const url=  "https://jsonserver-rose.vercel.app/"+"posts?postuserid="+ userdata.id+"&q=" + search
-  axios.get(url)
-  .then((resp) => {
-    setpostdata(resp.data)
-  }).catch((err) => {
-      
-  });
- }
 
 
   return (
@@ -70,7 +61,12 @@ const getPost=(userid)=>{
 <div className="col-md-2">
 <Card >
       <Card.Body>
-      <img  className="profileimage" src={userdata.imageurl}/>
+      <Image
+         width={80}
+         height={80}
+      src={userdata.imageurl}
+      alt="Picture of the author"
+    />
         <Card.Title>
           {userdata.name}
         </Card.Title>
@@ -87,38 +83,14 @@ const getPost=(userid)=>{
         <ListGroup.Item>
         <Link href="/myposts">My Posts</Link></ListGroup.Item>
         <ListGroup.Item>
-        <Link href="/accountSettings">
+        <Link href={`/${userdata.id}/edit`}>
           Account Settings</Link></ListGroup.Item>
       </ListGroup>
     </Card>
 
 
   </div>
-  <div className="col-md-7">
-  <div className="row g-3 justify-content-center mt-2">
-  <div className="col-auto">
-    <input type="search" className="form-control searchbar1" id="inputPassword1" placeholder="Search any word or phrase"  value={search} onChange={(ev) => setSearch(ev.target.value)}/>
-  </div>
-  <div className="col-auto">
-    <button type="submit" className="btn btn-primary mb-3" onClick={SearchPost}>Go</button>
-  </div>
-</div>
-
-{
-  postdata.map((Item)=>{
-   return <Card  className="postcard" key={Item.id}>
-      <Card.Body>
-        <Card.Title>{Item.heading}</Card.Title>
-        <Card.Text>
-        {Item.description}
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  })
-}
-
-
-  </div>
+ <ProfilePost/>
   </div>
 </div>
 </>  

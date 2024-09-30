@@ -176,7 +176,12 @@ useEffect(()=>{
 <div className="col-md-2">
 <Card >
       <Card.Body>
-      <img  className="profileimage" src={userdata.imageurl}/>
+      <Image
+      width={80}
+      height={80}
+      src={userdata.imageurl}
+      alt="Picture of the author"
+    />
         <Card.Title>
           {userdata.name}
         </Card.Title>
@@ -193,7 +198,7 @@ useEffect(()=>{
         <ListGroup.Item>
         <Link href="/myposts">My Posts</Link></ListGroup.Item>
         <ListGroup.Item>
-        <Link href="/accountSettings">
+        <Link href={`/${userdata.id}/edit`}>
           Account Settings</Link></ListGroup.Item>
       </ListGroup>
     </Card>
@@ -253,7 +258,7 @@ useEffect(()=>{
     </div>
     <br />
     <div >
-    <label for="formFile" className="form-label">Default file input example</label>
+    <label htmlFor="formFile" className="form-label">Default file input example</label>
     <input className="form-control customfileupload upload-photo" 
     type="file"
     id='formFile'
@@ -275,7 +280,9 @@ useEffect(()=>{
       />
     </div>
     <div className={'inputContainer'}>
-      <input className={'inputButton'} type="button" onClick={EditProfile} value={'Sign Up'} />
+      <button className={'inputButton2'} type="button" onClick={EditProfile}  >
+      Edit Profile
+      </button>
     </div>
 
 
